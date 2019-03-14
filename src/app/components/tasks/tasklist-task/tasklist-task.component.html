@@ -1,6 +1,6 @@
 <ion-card-content class="status"
                   [ngClass]="this.task.tasks.length === this.validCounts ? 'status--completed' : (this.validCounts != 0? 'status--started':'') ">
-    <ion-list lines="none">
+    <ion-list lines="none" *ngIf="task.title != ''">
         <ion-item>
             <ion-label text-wrap>{{task.title}}</ion-label>
         </ion-item>
