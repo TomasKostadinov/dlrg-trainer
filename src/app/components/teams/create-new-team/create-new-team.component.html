@@ -1,0 +1,92 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>
+            Neue Gruppe
+        </ion-title>
+        <ion-buttons slot="primary">
+            <ion-button color="secondary">
+                <ion-icon slot="icon-only" name="save"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding color="light">
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button [disabled]="team.attendees.length == 0 || team.name == ''">
+            <ion-icon (click)="saveTeam()" name="save"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
+    <ion-card class="white-card">
+        <ion-card-header>
+            <ion-card-title>Neue Gruppe erstellen</ion-card-title>
+            <ion-card-subtitle>
+                Gruppen können zum Beispiel die Teilnehmer des Schwimmkurses oder die
+                Wettkampfmannschaft sein.
+            </ion-card-subtitle>
+        </ion-card-header>
+        <ion-list color="light">
+            <ion-list-header>
+                <ion-label>Angaben zur Gruppe</ion-label>
+            </ion-list-header>
+            <ion-item>
+                <ion-icon slot="start" color="medium" name="create"></ion-icon>
+                <ion-input required [(ngModel)]="team.name" placeholder="Name"></ion-input>
+            </ion-item>
+            <ion-item lines="none">
+                <ion-icon slot="start" color="medium" name="pin"></ion-icon>
+                <ion-input [(ngModel)]="team.location" placeholder="Ort"></ion-input>
+            </ion-item>
+        </ion-list>
+    </ion-card>
+    <ion-card class="white-card">
+        <ion-card-header>
+            <ion-card-title>Teilnehmer hinzufügen</ion-card-title>
+        </ion-card-header>
+        <ion-list color="light">
+            <ion-list-header>
+                <ion-label>Person erstellen</ion-label>
+            </ion-list-header>
+            <ion-item lines="none">
+                <ion-icon slot="start" color="medium" name="contact"></ion-icon>
+                <ion-input required [(ngModel)]="newAttendee.firstName" placeholder="Vorname"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-icon slot="start" color="medium" name=""></ion-icon>
+                <ion-input required [(ngModel)]="newAttendee.lastName" placeholder="Nachname"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-icon slot="start" color="medium" name="trophy"></ion-icon>
+                <ion-input required [(ngModel)]="newAttendee.badge" placeholder="Abzeichen"></ion-input>
+            </ion-item>
+            <ion-item lines="none">
+                <ion-icon slot="start" color="medium" name="calendar"></ion-icon>
+                <ion-datetime [(ngModel)]="newAttendee.lastRefresh" placeholder="Geburtsdatum" class="fixed-datetime"
+                              display-format="DD.MM.YYYY"></ion-datetime>
+            </ion-item>
+        </ion-list>
+        <ion-card-content style="text-align: right">
+            <ion-button (click)="createAttendee()"
+                        [disabled]="newAttendee.badge == '' || newAttendee.lastName == '' || newAttendee.firstName == ''"
+                        color="primary" style="">
+                <ion-icon name="create"></ion-icon>
+                <ion-ripple-effect></ion-ripple-effect>
+                Hinzufügen
+            </ion-button>
+        </ion-card-content>
+    </ion-card>
+    <ion-card class="white-card" *ngIf="team.attendees.length != 0">
+        <ion-card-header>
+            <ion-card-title>Teilnehmerliste</ion-card-title>
+        </ion-card-header>
+        <ion-list color="light" lines="none">
+            <ion-item *ngFor="let attendee of team.attendees">
+                <ion-icon slot="start" color="medium" name="contact"></ion-icon>
+                <ion-label>{{ attendee.firstName}} {{ attendee.lastName}}</ion-label>
+            </ion-item>
+        </ion-list>
+    </ion-card>
+</ion-content>

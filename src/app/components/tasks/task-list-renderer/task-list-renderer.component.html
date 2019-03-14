@@ -1,0 +1,10 @@
+<ng-container *ngIf="!hideCard">
+    <ion-card class="task-card" *ngFor="let task of tasks">
+        <task [task]="task"></task>
+    </ion-card>
+</ng-container>
+<ng-container *ngIf="hideCard">
+    <ng-container class="task-card" *ngFor="let task of tasks">
+        <task class="no-top-border" [task]="task"></task>
+    </ng-container>
+</ng-container>

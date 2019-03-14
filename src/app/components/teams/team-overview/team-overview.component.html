@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Meine Gruppen
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding color="light">
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button>
+      <ion-icon routerLink="/teams/create" name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <ion-card class="white-card" *ngIf="savedTeams == null">
+    <ion-img src="/assets/check_people.svg"
+             style="display: block;margin-left: auto;margin-right: auto;max-width: 500px;padding: 50px; align-content: center"></ion-img>
+    <ion-card-header>
+      <ion-card-title>Gruppen</ion-card-title>
+      <ion-card-subtitle>Gruppen können zum Beispiel die Teilnehmer des Schwimmkurses oder die
+        Wettkampfmannschaft sein.
+      </ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <p>Erstelle eine neue Gruppe, indem du auf das "+" Symbol unten rechts drückst. Anschließend kannst du
+        Personen hinzufügen.</p>
+    </ion-card-content>
+  </ion-card>
+  <ion-card class="white-card" *ngIf="savedTeams != null">
+    <ion-list color="light" lines="none">
+      <ion-list-header>
+        <ion-label>Gruppen</ion-label>
+      </ion-list-header>
+      <ion-item *ngFor="let team of savedTeams;" [routerLink]="'/teams/' + team.id">
+        <ion-icon slot="start" color="medium" name="contacts"></ion-icon>
+        <ion-label>{{ team.name }}
+          <small>{{ team.attendees.length}} Teilnehmer</small>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+</ion-content>

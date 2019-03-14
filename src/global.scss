@@ -3,9 +3,67 @@
 @import '~@ionic/angular/css/normalize.css';
 @import '~@ionic/angular/css/structure.css';
 @import '~@ionic/angular/css/typography.css';
-
 @import '~@ionic/angular/css/padding.css';
 @import '~@ionic/angular/css/float-elements.css';
 @import '~@ionic/angular/css/text-alignment.css';
 @import '~@ionic/angular/css/text-transformation.css';
 @import '~@ionic/angular/css/flex-utils.css';
+
+ion-toolbar {
+  background: var(--ion-color-primary)
+}
+
+ion-title {
+  color: var(--ion-color-secondary)
+}
+
+.task-card {
+  background-color: #fff;
+}
+
+.no-border {
+  border: none;
+}
+
+.badge-card {
+  background-color: var(--ion-color-tertiary);
+}
+
+.badge-card ion-card-title {
+  color: #fff;
+}
+
+.badge-card ion-card-subtitle {
+  color: var(--ion-color-light);
+}
+
+.status {
+  border-top: 5px solid var(--ion-color-tertiary);
+  float: left;
+  width: 100%;
+  transition: 500ms;
+}
+
+.status.status--completed {
+  border-top-color: var(--ion-color-success);
+}
+
+status.status--running {
+  border-top-color: var(--ion-color-warning);
+}
+
+.status.status--failed{
+  border-top-color: var(--ion-color-danger);
+}
+
+.status.no-top-border {
+  border-top: none;
+}
+
+.white-card {
+  background-color: #fff;
+}
+
+.fixed-datetime {
+  --padding-start: -2px;
+}

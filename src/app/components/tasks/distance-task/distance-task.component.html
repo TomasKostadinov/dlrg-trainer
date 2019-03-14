@@ -1,0 +1,31 @@
+<ion-card-content class="status status--running" [ngClass]="count*25 === task.distance ? 'status--completed' : 'status--running'">
+    <ion-list lines="none">
+        <ion-item text-wrap>
+            <h2>{{task.title}}</h2>
+        </ion-item>
+        <ion-progress-bar color="tertiary" [value]="count*25/task.distance"></ion-progress-bar>
+
+    </ion-list>
+
+    <ion-row align-items-center>
+        <ion-col>
+            <ion-button color="tertiary" [disabled]="count*25 === task.distance" (click)="this.countUp()">
+                <ion-icon name="add"></ion-icon>
+                Bahn
+            </ion-button>
+        </ion-col>
+        <ion-col style="text-align: center">
+            <ion-label text-wrap>
+                <h3>
+                    <ion-label>{{ count * 25 }}m / {{ task.distance }}m</ion-label>
+                </h3>
+            </ion-label>
+        </ion-col>
+        <ion-col style="text-align: right">
+            <ion-button color="danger" [disabled]="count === 0" (click)="countDown()">
+                <ion-icon name="remove"></ion-icon>
+                Bahn
+            </ion-button>
+        </ion-col>
+    </ion-row>
+</ion-card-content>

@@ -1,5 +1,7 @@
 {
   "name": "DLRG Prüfung",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
