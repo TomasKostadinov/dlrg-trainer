@@ -1,3 +1,53 @@
-<p>
-  exam-overview works!
-</p>
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>
+            Prüfungsabnahme
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding color="light">
+    <ion-card class="white-card">
+        <ion-img src="/assets/cards.svg"
+                 style="display: block;margin-left: auto;margin-right: auto;max-width: 500px;padding: 50px; align-content: center"></ion-img>
+        <ion-card-header>
+            <ion-card-title>Prüfungsabnahme</ion-card-title>
+            <ion-card-subtitle>
+                Hier findest du alle Prüfungen der DLRG in der Schwimmausbildung. Um mit dem Abnehmen einer Prüfung zu
+                beginnen, wähle eine Gruppe aus.
+            </ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+            <p>Du kannst anschließend wählen, ob eine einzelne Person oder gleich eine ganze Gruppe prüfen möchtest.</p>
+        </ion-card-content>
+    </ion-card>
+    <ion-card class="white-card" *ngIf="savedTeams != null">
+        <ion-list color="light" lines="none">
+            <ion-list-header>
+                <ion-label>Gruppe wählen...</ion-label>
+            </ion-list-header>
+            <ion-item *ngFor="let team of savedTeams;" (click)="onClick(team.id)">
+                <ion-icon slot="start" color="medium" name="contacts"></ion-icon>
+                <ion-label text-wrap>{{ team.name }}<br>
+                    <small>{{ team.attendees.length}} Teilnehmer</small>
+                </ion-label>
+            </ion-item>
+        </ion-list>
+    </ion-card>
+    <ion-card class="white-card">
+        <ion-list color="light" lines="none">
+            <ion-list-header>
+                <ion-label>Nur Abzeichen abnehmen (nicht speichern)</ion-label>
+            </ion-list-header>
+            <ion-item *ngFor="let badge of badges;" [routerLink]="'/badges/single/' + badge.id">
+                <ion-icon slot="start" color="medium" name="trophy"></ion-icon>
+                <ion-label text-wrap>
+                    {{ badge.title }}
+                </ion-label>
+            </ion-item>
+        </ion-list>
+    </ion-card>
+</ion-content>
