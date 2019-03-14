@@ -5,6 +5,8 @@ import {Storage} from '@ionic/storage';
 import * as uuid from 'uuid';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Location} from '@angular/common';
+import {Badge} from '../../../interfaces/badge.interface';
+import {badges} from '../../../config/badges.config';
 
 
 @Component({
@@ -13,11 +15,23 @@ import {Location} from '@angular/common';
 })
 export class EditTeamComponent implements OnInit {
 
+  public badges: Badge[] = badges;
+
+  public selectGoalActionSheetOptions: any = {
+    header: 'Abzeichen wählen',
+    subHeader: 'Zielabzeichen der Gruppe wählen',
+  };
+  public selectBadgeActionSheetOptions: any = {
+    header: 'Abzeichen wählen',
+    subHeader: 'Aktuelles Abzeichen des Teilnehmers',
+  };
+
   public team: Team = {
     id: '',
     attendees: [],
     location: '',
     name: '',
+    goal: '',
   };
 
   public newAttendee: Attendee = {
@@ -55,7 +69,7 @@ export class EditTeamComponent implements OnInit {
     // push new team item and save to database
     this.savedTeams.push(this.team);
     this.storage.set('teams', this.savedTeams);
-    this.router.navigate(['/teams/' + this.team.id], { replaceUrl: true });
+    this.router.navigate(['/teams/' + this.team.id], {replaceUrl: true});
   }
 
   public createAttendee() {

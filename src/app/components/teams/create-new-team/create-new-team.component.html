@@ -6,11 +6,6 @@
         <ion-title>
             Neue Gruppe
         </ion-title>
-        <ion-buttons slot="primary">
-            <ion-button color="secondary">
-                <ion-icon slot="icon-only" name="save"></ion-icon>
-            </ion-button>
-        </ion-buttons>
     </ion-toolbar>
 </ion-header>
 
@@ -36,9 +31,19 @@
                 <ion-icon slot="start" color="medium" name="create"></ion-icon>
                 <ion-input required [(ngModel)]="team.name" placeholder="Name"></ion-input>
             </ion-item>
-            <ion-item lines="none">
+            <ion-item>
                 <ion-icon slot="start" color="medium" name="pin"></ion-icon>
                 <ion-input [(ngModel)]="team.location" placeholder="Ort"></ion-input>
+            </ion-item>
+            <ion-item lines="none">
+                <ion-icon slot="start" color="medium" name="trophy"></ion-icon>
+                <ion-label>Zielabzeichen</ion-label>
+                <ion-select required [(ngModel)]="team.goal" [interfaceOptions]="selectGoalActionSheetOptions"
+                            interface="action-sheet" placeholder="Bitte wählen">
+                    <ion-select-option value="0">Freies Training</ion-select-option>
+                    <ion-select-option [value]="badge.id"
+                                       *ngFor="let badge of badges">{{badge.title}}</ion-select-option>
+                </ion-select>
             </ion-item>
         </ion-list>
     </ion-card>
@@ -59,13 +64,18 @@
                 <ion-input required [(ngModel)]="newAttendee.lastName" placeholder="Nachname"></ion-input>
             </ion-item>
             <ion-item>
-                <ion-icon slot="start" color="medium" name="trophy"></ion-icon>
-                <ion-input required [(ngModel)]="newAttendee.badge" placeholder="Abzeichen"></ion-input>
-            </ion-item>
-            <ion-item lines="none">
                 <ion-icon slot="start" color="medium" name="calendar"></ion-icon>
                 <ion-datetime [(ngModel)]="newAttendee.lastRefresh" placeholder="Geburtsdatum" class="fixed-datetime"
                               display-format="DD.MM.YYYY"></ion-datetime>
+            </ion-item>
+            <ion-item lines="none">
+                <ion-icon slot="start" color="medium" name="trophy"></ion-icon>
+                <ion-label>Abzeichen</ion-label>
+                <ion-select required [(ngModel)]="newAttendee.badge" [interfaceOptions]="selectBadgeActionSheetOptions"
+                            interface="action-sheet" placeholder="Bitte wählen">
+                    <ion-select-option [value]="badge.id"
+                                       *ngFor="let badge of badges">{{badge.title}}</ion-select-option>
+                </ion-select>
             </ion-item>
         </ion-list>
         <ion-card-content style="text-align: right">

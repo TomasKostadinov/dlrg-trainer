@@ -12,6 +12,15 @@ import {Router} from '@angular/router';
 })
 export class CreateNewTeamComponent implements OnInit {
 
+  public selectGoalActionSheetOptions: any = {
+    header: 'Abzeichen wählen',
+    subHeader: 'Zielabzeichen der Gruppe wählen',
+  };
+  public selectBadgeActionSheetOptions: any = {
+    header: 'Abzeichen wählen',
+    subHeader: 'Aktuelles Abzeichen des Teilnehmers',
+  };
+
   public newAttendee: Attendee = {
     id: uuid.v4(),
     lastName: '',
@@ -26,6 +35,7 @@ export class CreateNewTeamComponent implements OnInit {
     attendees: [],
     location: '',
     name: '',
+    goal: '',
   };
 
   private savedTeams: Team[] = [];
