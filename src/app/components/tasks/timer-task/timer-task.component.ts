@@ -1,7 +1,8 @@
-import {Component, Input, OnDestroy} from '@angular/core';
+import {Component, EventEmitter, Input, OnDestroy, Output} from '@angular/core';
 import {DistanceTask} from '../../../interfaces/badge.interface';
-import {ClockService} from '../../../services/clock.service';
+import {ClockService} from '../../../services/clock-service/clock.service';
 import {first} from 'rxjs/operators';
+import {Validator} from '../../../interfaces/validator.interface.';
 
 @Component({
   selector: 'timer-task',
@@ -10,8 +11,17 @@ import {first} from 'rxjs/operators';
 })
 export class TimerTaskComponent implements OnDestroy {
   @Input() task: DistanceTask;
+  @Output() validatorEvent = new EventEmitter<Validator>();
   public startTime: number = 0;
   public endTime: number = 0;
+
+  public sendValidation() {
+    const status: Validator = {
+      valid: true,
+      value: this.endTime - this.startTime,
+    };
+    this.validatorEvent.emit(status);
+  }
 
   constructor(private clock: ClockService) {
   }
@@ -37,5 +47,6 @@ export class TimerTaskComponent implements OnDestroy {
 
   public stopTimer() {
     this.clock.time$.unsubscribe();
+    this.sendValidation();
   }
 }

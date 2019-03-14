@@ -1,7 +1,7 @@
 <ion-card-content class="status" [ngClass]="this.checked ? 'status--completed' : 'status--running'">
     <ion-list lines="none">
         <ion-item>
-            <ion-checkbox slot="start" [(ngModel)]="checked"></ion-checkbox>
+            <ion-checkbox (click)="sendValidation()" slot="start" [(ngModel)]="checked"></ion-checkbox>
             <ion-label text-wrap>{{task.title}}</ion-label>
         </ion-item>
     </ion-list>

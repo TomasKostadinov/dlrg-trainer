@@ -1,5 +1,11 @@
-<ng-container *ngIf="!hideCard">
-    <ion-card class="task-card" *ngFor="let task of tasks">
+<ion-card-content class="status"
+                  [ngClass]="this.task.tasks.length === this.validCounts ? 'status--completed' : (this.validCounts != 0? 'status--started':'') ">
+    <ion-list lines="none">
+        <ion-item>
+            <ion-label text-wrap>{{task.title}}</ion-label>
+        </ion-item>
+    </ion-list>
+    <div class="task-card light-border" *ngFor="let task of task.tasks">
         <check-task (validatorEvent)="receiveValidatorEvent($event)" *ngIf="task._type == 'CheckTask'"
                     [task]="task"></check-task>
         <counter-task (validatorEvent)="receiveValidatorEvent($event)" *ngIf="task._type == 'CounterTask'"
@@ -10,7 +16,5 @@
                     [task]="task"></timer-task>
         <distance-timer-task (validatorEvent)="receiveValidatorEvent($event)" *ngIf="task._type == 'DistanceTimerTask'"
                              [task]="task"></distance-timer-task>
-        <tasklist-task (validatorEvent)="receiveValidatorEvent($event)" *ngIf="task._type == 'TaskListTask'"
-                       [task]="task"></tasklist-task>
-    </ion-card>
-</ng-container>
+    </div>
+</ion-card-content>

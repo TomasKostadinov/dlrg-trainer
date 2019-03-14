@@ -1,8 +1,0 @@
-  <check-task *ngIf="task._type == 'CheckTask'" [task]="task"></check-task>
-  <counter-task *ngIf="task._type == 'CounterTask'" [task]="task"></counter-task>
-  <distance-task *ngIf="task._type == 'DistanceTask'" [task]="task"></distance-task>
-  <timer-task *ngIf="task._type == 'TimerTask'" [task]="task"></timer-task>
-  <distance-timer-task *ngIf="task._type == 'DistanceTimerTask'" [task]="task"></distance-timer-task>
-<ng-container *ngIf="task._type == 'TaskListTask'">
-  <task-list-renderer hideCard="true" [tasks]="task.tasks"></task-list-renderer>
-</ng-container>

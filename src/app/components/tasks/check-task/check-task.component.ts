@@ -1,18 +1,23 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {CheckTask} from '../../../interfaces/badge.interface';
+import {Validator} from '../../../interfaces/validator.interface.';
 
 @Component({
   selector: 'check-task',
   templateUrl: './check-task.component.html',
   styleUrls: ['./check-task.component.scss'],
 })
-export class CheckTaskComponent implements OnInit {
+export class CheckTaskComponent {
+
   @Input() task: CheckTask;
+  @Output() validatorEvent = new EventEmitter<Validator>();
   public checked: boolean = false;
 
-  constructor() {
-  }
-
-  ngOnInit() {
+  public sendValidation() {
+    let status: Validator = {
+      valid: !this.checked,
+      value: !this.checked,
+    };
+    this.validatorEvent.emit(status);
   }
 }

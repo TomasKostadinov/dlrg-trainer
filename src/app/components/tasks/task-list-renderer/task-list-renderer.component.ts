@@ -9,8 +9,16 @@ import {Task} from '../../../interfaces/badge.interface';
 export class TaskListRendererComponent implements OnInit {
   @Input() tasks: Task;
   @Input() hideCard: boolean;
-  constructor() { }
+  private message: string;
 
-  ngOnInit() {}
+  public receiveValidatorEvent($event) {
+    this.message = $event;
+  }
+
+  constructor() {
+  }
+
+  ngOnInit() {
+  }
 
 }
