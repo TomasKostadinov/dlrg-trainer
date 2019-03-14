@@ -24,7 +24,24 @@ export class ExamOverviewComponent implements OnInit {
     });
   }
 
-  async onClick(id: string) {
+  async onClick(team: Team) {
+
+    const userList: any[] = [];
+    for (const attendee of team.attendees) {
+      userList.push({
+        text: attendee.firstName + ' ' + attendee.lastName,
+        icon: 'contact',
+        handler: () => {
+          this.router.navigate(['/badges/single/' + team.goal]);
+        },
+      });
+    }
+
+    const selectUserSheet = await this.actionSheetController.create({
+      header: 'Person wählen',
+      buttons: userList,
+    });
+
     const actionSheet = await this.actionSheetController.create({
       header: 'Prüfung starten',
       buttons: [{
@@ -32,14 +49,14 @@ export class ExamOverviewComponent implements OnInit {
         role: 'destructive',
         icon: 'contact',
         handler: () => {
-          this.router.navigate(['/badges/mass/' + id], {replaceUrl: true});
+          selectUserSheet.present();
         },
       }, {
         text: 'Mehrere Personen prüfen',
         role: 'destructive',
         icon: 'contacts',
         handler: () => {
-          this.router.navigate(['/badges/single/' + id], {replaceUrl: true});
+          this.router.navigate(['/badges/mass/' + team.id]);
         },
       },
       ],

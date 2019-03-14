@@ -29,7 +29,7 @@
             <ion-list-header>
                 <ion-label>Gruppe wählen...</ion-label>
             </ion-list-header>
-            <ion-item *ngFor="let team of savedTeams;" (click)="onClick(team.id)">
+            <ion-item *ngFor="let team of savedTeams;" (click)="onClick(team)">
                 <ion-icon slot="start" color="medium" name="contacts"></ion-icon>
                 <ion-label text-wrap>{{ team.name }}<br>
                     <small>{{ team.attendees.length}} Teilnehmer</small>
