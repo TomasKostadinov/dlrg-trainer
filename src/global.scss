@@ -38,26 +38,27 @@ ion-title {
 }
 
 .status {
-  border-top: 5px solid var(--ion-color-tertiary);
+  border-left: 5px solid var(--ion-color-tertiary);
   float: left;
   width: 100%;
   transition: 500ms;
 }
 
 .status.status--completed {
-  border-top-color: var(--ion-color-success);
+  border-left-color: var(--ion-color-success);
 }
 
-status.status--running {
-  border-top-color: var(--ion-color-warning);
+.status.status--started {
+  border-left-color: var(--ion-color-warning);
 }
 
 .status.status--failed{
-  border-top-color: var(--ion-color-danger);
+  border-left-color: var(--ion-color-danger);
 }
 
-.status.no-top-border {
-  border-top: none;
+.light-border .status {
+  border-top: 1px solid var(--ion-color-light);
+  border-left: none;
 }
 
 .white-card {
