@@ -14,7 +14,8 @@ export class TasklistTaskComponent {
   public validCounts = 0;
 
   public receiveValidatorEvent($event: Validator) {
-    if ($event.valid) {
+    if ($event.valid && this.task.tasks.length !== this.validCounts) {
+      // todo fix validation error
       this.validCounts = this.validCounts + 1;
     } else if (this.validCounts !== 0) {
       this.validCounts = this.validCounts - 1;
