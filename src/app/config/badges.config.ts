@@ -148,45 +148,113 @@ export const badges: Badge[] = [
     category: 'Rettungsschwimmabzeichen',
     tasks: [
       {
-        title: '200 m Schwimmen in höchstens 10 Minuten, davon 100 m in Bauchlage und ' +
-          '100 m in Rückenlage mit Grätschschwung ohne Armtätigkeit\n',
+        title: '200 m Schwimmen in höchstens 10 Minuten',
         tasks: [
           {
-            title: '',
-            check: false,
-            _type: 'CheckTask',
-          } as CheckTask,
+            title: 'Maximale Zeit: 10 min',
+            time: 10 * 60,
+            _type: 'TimerTask',
+          } as TimerTask,
           {
-            title: '200m Schwimmen in höchstens 15 Minuten',
-            distance: 1200,
+            title: 'davon 100 m in Bauchlage',
+            distance: 100,
+            _type: 'DistanceTask',
+          } as DistanceTask,
+          {
+            title: 'davon 100 m in Rückenlage mit Grätschschwung ohne Armtätigkeit',
+            distance: 100,
             _type: 'DistanceTask',
           } as DistanceTask,
         ],
         _type: 'TaskListTask',
       } as TaskListTask,
       {
-        title: 'Einmal ca. 2m Tieftauchen von der Wasseroberfläche mit Heraufholen eines Gegenstandes',
-        _type: 'CheckTask',
-      } as CheckTask,
+        title: '100m Kleiderschwimmen, anschließend im Wasser entkleiden',
+        tasks: [
+          {
+            title: 'Maximale Zeit: 10 min',
+            time: 4 * 60,
+            _type: 'TimerTask',
+          } as TimerTask,
+          {
+            title: '100 m Kleiderschwimmen',
+            distance: 100,
+            _type: 'DistanceTask',
+          } as DistanceTask,
+          {
+            title: 'Im Wasser entkleidet',
+            _type: 'CheckTask',
+          } as CheckTask,
+        ],
+        _type: 'TaskListTask',
+      } as TaskListTask,
       {
-        title: '2 Sprünge aus 1m Höhe oder Startsprung',
+        title: '3 verschiedene Sprünge aus etwa 1 m Höhe (z.B. Kopfsprung, Paketsprung, Startsprung)',
         _type: 'CounterTask',
-        counts: 2,
+        counts: 3,
       } as CounterTask,
       {
-        title: '200m',
+        title: '15 m Streckentauchen',
         _type: 'DistanceTask',
         distance: 1200,
       } as DistanceTask,
       {
-        title: 'Sprung aus 1m Höhe oder Startsprung',
-        _type: 'TimerTask',
-        time: 20,
-      } as TimerTask,
+        title: 'Zweimal Tieftauchen von der Wasseroberfläche, einmal kopfwärts und einmal fußwärts, ' +
+          'innerhalb von 3 Minuten mit zweimaligem Heraufholen eines 5-kg-Tauchringes oder ' +
+          'eines gleichartigen Gegenstandes (Wassertiefe zwischen 2 und 3 m)',
+        _type: 'CounterTask',
+        counts: 2,
+      } as CounterTask,
       {
-        title: 'Kenntnis der Baderegeln',
+        title: '50 m Transportschwimmen: Schieben oder Ziehen',
+        _type: 'DistanceTask',
+        distance: 50,
+      } as DistanceTask,
+      {
+        title: 'Fertigkeiten zur Vermeidung von Umklammerungen sowie zur' +
+          ' Befreiung aus Halsumklammerung von hinten und Halswürgegriff von hinten\n',
         _type: 'CheckTask',
       } as CheckTask,
+      {
+        title: '50 m Schleppen mit Kopf- oder Achselschleppgriff und dem Standard-Fesselschleppgriff',
+        _type: 'DistanceTask',
+        distance: 50,
+      } as DistanceTask,
+      {
+        title: 'Kombinierte Übung, die ohne Pause in der angegebenen Reihenfolge zu erfüllen ist',
+        tasks: [
+          {
+            title: '20 m Anschwimmen in Bauchlage, hierbei etwa auf halber Strecke Abtauchen in 2-3 m Tiefe ' +
+              'und Heraufholen eines 5-kg-Tauchrings oder eines gleichartigen Gegenstandes,' +
+              ' diesen anschließend fallen lassen und das Anschwimmen fortsetzen,',
+            _type: 'CheckTask',
+          } as CheckTask,
+          {
+            title: '20 m Schleppen eines Partners',
+            _type: 'CheckTask',
+          } as CheckTask,
+        ],
+        _type: 'TaskListTask',
+      } as TaskListTask,
+      {
+        title: 'Demonstration des Anlandbringens',
+        _type: 'CheckTask',
+      } as CheckTask,
+      {
+        title: 'Vorführung von Herz-Lungen-Wiederbelebung (HLW)',
+        _type: 'CheckTask',
+      } as CheckTask,
+      {
+        title: 'Theoretische Prüfung',
+        tasks: [
+          {
+            title: 'Wiederbelebungsmethoden, Vermeidung von Umklammerungen, Erste Hilfe,' +
+              'Die DLRG: Organisation, Aufgaben unter besonderer Berücksichtigung des Wasserrettungsdienstes',
+            _type: 'CheckTask',
+          } as CheckTask,
+        ],
+        _type: 'TaskListTask',
+      } as TaskListTask,
     ],
   },
 ];
