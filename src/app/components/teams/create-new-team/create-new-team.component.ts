@@ -4,6 +4,8 @@ import {Attendee} from '../../../interfaces/attendee.interface';
 import {Storage} from '@ionic/storage';
 import * as uuid from 'uuid';
 import {Router} from '@angular/router';
+import {Badge} from '../../../interfaces/badge.interface';
+import {badges} from '../../../config/badges.config';
 
 
 @Component({
@@ -11,6 +13,7 @@ import {Router} from '@angular/router';
   styleUrls: ['./create-new-team.component.scss'],
 })
 export class CreateNewTeamComponent implements OnInit {
+  public badges: Badge[] = badges;
 
   public selectGoalActionSheetOptions: any = {
     header: 'Abzeichen wählen',
