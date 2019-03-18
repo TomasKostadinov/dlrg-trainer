@@ -1,8 +1,8 @@
-export interface Attendee {
+import {Person} from './person.interface';
+
+export interface Attendee extends Person {
   id: string;
-  firstName: string;
-  lastName: string;
-  birthDay: string;
   badge: string;
+  team?: string;
   lastRefresh: number;
 }
