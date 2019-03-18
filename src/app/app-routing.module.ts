@@ -20,8 +20,12 @@ const routes: Routes = [
     loadChildren: './components/teams/teams.module#TeamsModule',
   },
   {
-    path: 'attendance-tracking',
-    loadChildren: './components/attendance-tracking/attendance-tracking.module#AttendanceTrackingPageModule',
+    path: 'attendance',
+    loadChildren: './components/attendance/attendance.module#AttendanceModule',
+  },
+  {
+    path: 'profile',
+    loadChildren: './components/my-profile/my-profile.module#MyProfilePageModule',
   },
 ];
 

@@ -16,7 +16,7 @@ export const appPages: MenuGroup[] = [
       },
       {
         title: 'Anwesenheitsliste',
-        url: '/attendance-tracking',
+        url: '/attendance',
         icon: 'calendar',
       },
       {
@@ -30,6 +30,14 @@ export const appPages: MenuGroup[] = [
         icon: 'hammer',
       },
     ],
+  }, {
+    title: 'Mein Profil',
+    items: [
+      {
+        title: 'Mein Profil',
+        url: '/profile',
+        icon: 'person',
+      }],
   }, {
     title: 'Info',
     items: [
@@ -48,5 +56,5 @@ export const appPages: MenuGroup[] = [
         url: '/badges',
         icon: 'cog',
       }],
-  }
+  },
 ];

@@ -1,0 +1,75 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>Anwesenheit feststellen</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content color="light" padding>
+    <ion-fab (click)="saveAttendance()" vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button>
+            <ion-icon name="save"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
+    <ion-card class="white-card">
+        <ion-searchbar debounce="500" [(ngModel)]="search" (ionInput)="findAttendee($event)"
+                       animated="true" search-icon="person" clearIcon="close"
+                       placeholder="Name eingeben"></ion-searchbar>
+        <ion-card-content>
+            Suche nach einer Person und wähle diese aus. Diese wird für das heutige Datum als anwesend markiert.<br>
+            Du kannst auch entschuldigte Personen auswählen und anschließend als solche markieren.
+        </ion-card-content>
+        <ion-list *ngIf="search != ''">
+            <ion-item *ngFor="let attendee of searchAttendees" (click)="trackAttendance(attendee)">
+                <ion-ripple-effect></ion-ripple-effect>
+                <ion-icon slot="start" color="medium" name="contact"></ion-icon>
+                <ion-label text-wrap>{{ attendee.firstName }} {{ attendee.lastName }}</ion-label>
+                <small>{{ attendee?.team }}</small>
+            </ion-item>
+        </ion-list>
+    </ion-card>
+    <ion-card class="white-card" *ngIf="attending.length !== 0">
+        <ion-card-header>
+            <h3 color="dark">Heute anwesend</h3><br>
+            <ion-label>Gesamt: {{attending.length}}</ion-label>
+        </ion-card-header>
+        <ion-list color="light" lines="none">
+            <ion-item *ngFor="let attendee of attending;">
+                <ion-icon slot="start" color="medium" name="contact"></ion-icon>
+                <ion-label>
+                    {{ attendee.firstName }} {{ attendee.lastName }}
+                    <small>{{ attendee.team}}</small>
+                </ion-label>
+                <ion-icon slot="end" color="medium" name="thermometer" (click)="trackExcuse(attendee)">
+                    <ion-ripple-effect></ion-ripple-effect>
+                </ion-icon>
+                <ion-icon slot="end" color="danger" name="trash">
+                    <ion-ripple-effect></ion-ripple-effect>
+                </ion-icon>
+            </ion-item>
+        </ion-list>
+    </ion-card>
+    <ion-card class="white-card" *ngIf="excused.length !== 0">
+        <ion-card-header>
+            <h3 color="dark">Heute entschuldigt</h3><br>
+            <ion-label>
+                Diese Personen fehlen aufgrund von Krankheit o.ä.<br>
+                Gesamt: {{excused.length}}
+            </ion-label>
+        </ion-card-header>
+        <ion-list color="light" lines="none">
+            <ion-item *ngFor="let attendee of excused;">
+                <ion-icon slot="start" name="thermometer">
+                </ion-icon>
+                <ion-label>
+                    {{ attendee.firstName }} {{ attendee.lastName }}
+                    <small>{{ attendee.team}}</small>
+                </ion-label>
+                <ion-icon slot="end" color="danger" name="trash">
+                    <ion-ripple-effect></ion-ripple-effect>
+                </ion-icon>
+            </ion-item>
+        </ion-list>
+    </ion-card>
+</ion-content>

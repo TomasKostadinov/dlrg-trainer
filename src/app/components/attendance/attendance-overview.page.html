@@ -1,0 +1,59 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>Anwesenheitsliste</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content color="light" padding>
+    <ion-fab routerLink="/attendance/track" vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button>
+            <ion-icon name="add"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
+    <ion-card class="white-card">
+        <ion-img src="/assets/attendance.svg"
+                 style="display: block;margin-left: auto;margin-right: auto;max-width: 500px;padding: 50px; align-content: center"></ion-img>
+        <ion-card-header>
+            <ion-card-title>
+                Anwesenheitsliste
+            </ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+            <p>
+                Hier kannst du nachverfolgen, welche Person wann anwesenend oder entschuldigt war.
+                <br>
+                Um die heutige Anwesenheit aufzunehmen, drücke auf das "+" unten rechts.
+            </p>
+        </ion-card-content>
+    </ion-card>
+    <!--<ion-card class="white-card">
+        <ion-card-content>
+            <ion-title>Vergangene Anwesenheitslisten</ion-title>
+            Wähle eine Gruppe aus und dieser wird für das heutige Datum automatisch als anwesend markiert.
+        </ion-card-content>
+        <ion-list>
+            <ion-item *ngFor="let attendee of searchAttendees" (click)="trackAttendance(attendee)">
+                <ion-icon slot="start" color="medium" name="contact"></ion-icon>
+                <ion-label text-wrap>{{ attendee.firstName }} {{ attendee.lastName }}</ion-label>
+                <small>{{ attendee?.team }}</small>
+            </ion-item>
+        </ion-list>
+    </ion-card>
+    <ion-card class="white-card" *ngIf="attending.length !== 0">
+        <ion-card-header>
+            <h3 color="dark">Heute anwesend</h3><br>
+            <ion-label>Gesamt: {{attending.length}}</ion-label>
+        </ion-card-header>
+        <ion-list color="light" lines="none">
+            <ion-item *ngFor="let attendee of attending;">
+                <ion-icon slot="start" color="medium" name="contact"></ion-icon>
+                <ion-label>
+                    {{ attendee.firstName }} {{ attendee.lastName }}
+                    <small>{{ attendee.team}}</small>
+                </ion-label>
+            </ion-item>
+        </ion-list>
+    </ion-card>-->
+</ion-content>
