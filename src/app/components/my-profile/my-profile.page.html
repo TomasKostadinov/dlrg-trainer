@@ -1,0 +1,46 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>
+            Mein Profil
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding color="light">
+    <ion-fab (click)="saveUser()" vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button [disabled]="user.firstName == '' || user.lastName == '' ">
+            <ion-icon name="save"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
+    <ion-card class="white-card">
+        <ion-card-header>
+            <ion-card-title>Nutzerdaten bearbeiten</ion-card-title>
+        </ion-card-header>
+        <ion-list color="light">
+            <ion-list-header>
+                <ion-label>Angaben zur Person</ion-label>
+            </ion-list-header>
+            <ion-item lines="none">
+                <ion-icon slot="start" color="medium" name="contact"></ion-icon>
+                <ion-input required [(ngModel)]="user.firstName" placeholder="Vorname"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-icon slot="start" color="medium" name=""></ion-icon>
+                <ion-input required [(ngModel)]="user.lastName" placeholder="Nachname"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-icon slot="start" color="medium" name="card"></ion-icon>
+                <ion-input [(ngModel)]="user.licenseNumber"
+                           placeholder="Lehrscheinnummer (z.B.: 00/181/123/00"></ion-input>
+            </ion-item>
+            <ion-item lines="none">
+                <ion-icon slot="start" color="medium" name="calendar"></ion-icon>
+                <ion-datetime [(ngModel)]="user.birthDay" placeholder="Geburtsdatum" class="fixed-datetime"
+                              display-format="DD.MM.YYYY"></ion-datetime>
+            </ion-item>
+        </ion-list>
+    </ion-card>
+</ion-content>
