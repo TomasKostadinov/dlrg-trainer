@@ -7,7 +7,7 @@ import {SplashScreen} from '@ionic-native/splash-screen/ngx';
 import {StatusBar} from '@ionic-native/status-bar/ngx';
 
 import {AppComponent} from './app.component';
-import {AppRoutingModule} from './app-routing.module';
+import {AppRoutingModule} from './routing/app-routing.module';
 import {TasksModule} from './components/tasks/tasks.module';
 import {FormsModule} from '@angular/forms';
 import {IonicStorageModule} from '@ionic/storage';

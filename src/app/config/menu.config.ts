@@ -37,6 +37,11 @@ export const appPages: MenuGroup[] = [
         title: 'Mein Profil',
         url: '/profile',
         icon: 'person',
+      },
+      {
+        title: 'Abmelden',
+        url: '/login/logout',
+        icon: 'log-out',
       }],
   }, {
     title: 'Info',

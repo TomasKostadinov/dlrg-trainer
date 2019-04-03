@@ -1,0 +1,37 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-title>Anmelden</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <form #form="ngForm" (ngSubmit)="login(form)">
+        <ion-grid>
+            <ion-row color="primary" justify-content-center>
+                <ion-col align-self-center size-md="6" size-lg="2" size-xs="12">
+                    <ion-img src="/assets/login.svg"
+                             style="display: block;margin-left: auto;margin-right: auto;max-width: 500px;padding: 20px; align-content: center"></ion-img>
+                    <div padding-horizontal>
+                        <h3>Mit DLRG-Account anmelden</h3>
+                        <span>Aktuell außer Funktion!</span>
+                    </div>
+                    <div padding-horizontal>
+                        <ion-item>
+                            <ion-input name="email" type="email" placeholder="deine@email.dlrg.de" ngModel
+                                       required></ion-input>
+                        </ion-item>
+                        <ion-item>
+                            <ion-input name="password" type="password" placeholder="Password" ngModel
+                                       required></ion-input>
+                        </ion-item>
+                    </div>
+                    <div padding>
+                        <ion-button size="medium" type="submit" [disabled]="form.invalid" expand="block">
+                            Anmelden
+                        </ion-button>
+                    </div>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </form>
+</ion-content>
