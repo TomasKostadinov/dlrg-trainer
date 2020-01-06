@@ -7,6 +7,6 @@ export interface Team {
   name: string;
   location: string;
   attendees: Attendee[];
-  attendance: AttendanceEvent[];
+  attendance?: AttendanceEvent[];
   goal: string | Badge;
 }

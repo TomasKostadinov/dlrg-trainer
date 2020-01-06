@@ -75,7 +75,13 @@ export class TrackPage implements OnInit {
   }
 
   public saveAttendance() {
+    this.attending.forEach(function (attendee: Attendee) {
+      // attendee.team
+    });
+  }
 
+  public getTeam() {
+    //this.savedTeams.filter();
   }
 
   ngOnInit() {

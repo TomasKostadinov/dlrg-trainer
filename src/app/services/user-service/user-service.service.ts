@@ -14,6 +14,7 @@ export class UserService {
   constructor(private storage: Storage, private plt: Platform) {
     this.plt.ready().then(() => {
       this.checkToken();
+      console.log("Test");
     });
   }
 
